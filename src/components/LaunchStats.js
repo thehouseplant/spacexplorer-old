@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
-import Card, { CardContent } from 'material-ui/Card';
+import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Reddit from 'mdi-material-ui/Reddit';
 import Typography from 'material-ui/Typography';
 import axios from 'axios';
@@ -45,8 +45,8 @@ class LaunchStats extends Component {
   render() {
     return (
       <div>
-        <img src={this.state.links.mission_patch} alt="patch" />
         <Card style={{ marginTop: '25px' }}>
+          <CardMedia image={this.state.links.mission_patch} style={{ height: '500px' }} title="Mission Patch" />
           <CardContent>
             <Typography variant="headline" component="h3">
               Flight {this.state.launch.flight_number}
