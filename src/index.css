@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+  margin: 0;
+  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.footer {
+  background-color: #fff;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.footer a:link, .footer a:visited {
+  color: #3f51b5;
+  text-decoration: none;
+}
