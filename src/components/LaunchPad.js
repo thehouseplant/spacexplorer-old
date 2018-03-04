@@ -1,9 +1,11 @@
 import React from 'react';
 
+import LaunchPadStats from './LaunchPadStats';
+
 const LaunchPad = (props) => {
   return (
     <div>
-      <h3>Launch Pad</h3>
+      <LaunchPadStats launchpad={props.match.params.launchpad} />
     </div>
   );
 }
