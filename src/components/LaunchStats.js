@@ -45,7 +45,7 @@ class LaunchStats extends Component {
   render() {
     return (
       <div>
-        <Card style={{ marginTop: '25px' }}>
+        <Card>
           <CardMedia image={this.state.links.mission_patch} style={{ height: '500px' }} title="Mission Patch" />
           <CardContent>
             <Typography variant="headline" component="h3">

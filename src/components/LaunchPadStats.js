@@ -42,7 +42,7 @@ class LaunchPadStats extends Component {
 
     return (
       <div>
-        <Card style={{ marginTop: '25px' }}>
+        <Card>
           <CardContent>
             <Typography variant="headline" component="h3">
               {this.state.stats.full_name} ({this.state.stats.id})
