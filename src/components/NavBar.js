@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Button from 'material-ui/Button';
+import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
 import Hidden from 'material-ui/Hidden';
 import IconButton from 'material-ui/IconButton';
@@ -56,6 +57,12 @@ class NavBar extends Component {
               <Drawer open={this.state.left} onClose={this.toggleDrawer(false)}>
                 <div tabIndex={0} role="button" onClick={this.toggleDrawer(false)} onKeyDown={this.toggleDrawer(false)}>
                   <div className={classes.list}>
+                    <List>
+                      <ListItem>
+                        <ListItemText primary="SpaceXplorer" />
+                      </ListItem>
+                    </List>
+                    <Divider />
                     <List>
                       <ListItem button component={Link} to="/">
                         <ListItemText primary="Home" />
