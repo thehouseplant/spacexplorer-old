@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <div style={{ padding: '35px 5%' }}>
+        <div style={{ padding: '95px 5% 25px 5%' }}>
           <Grid container className={classes.root}>
             <Grid item xs={12}>
               <Main />
