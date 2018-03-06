@@ -6,12 +6,9 @@ class Footer extends Component {
       <div>
         <div className="footer">
           <p>
-            <span>
-              <strong>SpaceXplorer</strong> by <a href="https://seancollins.io">Sean Collins</a>.
-            </span>
-            <span style={{ paddingLeft: '5px' }}>
-              Built with <a href="https://reactjs.org/">React</a> and <a href="https://material-ui-next.com/">Material-UI</a>
-            </span>
+            <strong>SpaceXplorer</strong> by <a href="https://seancollins.io">Sean Collins</a>
+            <br />
+            Built with <a href="https://reactjs.org/">React</a> and <a href="https://material-ui-next.com/">Material-UI</a>
           </p>
         </div>
       </div>
