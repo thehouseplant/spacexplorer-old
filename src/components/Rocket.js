@@ -1,9 +1,11 @@
 import React from 'react';
 
+import RocketStats from './RocketStats';
+
 const Rocket = (props) => {
   return (
     <div>
-      <h3>Rocket</h3>
+      <RocketStats rocket={props.match.params.rocket}/>
     </div>
   );
 }
