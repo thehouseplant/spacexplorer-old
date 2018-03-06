@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import Video from 'mdi-material-ui/Video';
 import axios from 'axios';
+import moment from 'moment';
 
 class LaunchList extends Component {
   constructor(props) {
@@ -33,6 +34,8 @@ class LaunchList extends Component {
   }
 
   render() {
+    const LaunchDate = (props) => moment.unix(props.date).format('MM/DD/YYYY');
+
     return (
       <div>
         {this.state.launches.map(launch => 
@@ -41,9 +44,10 @@ class LaunchList extends Component {
               <Typography variant="headline" component="h3">
                 Flight {launch.flight_number}
               </Typography>
-              <Typography component="p">
+              <LaunchDate date={launch.launch_date_unix} />
+              <p>
                 {launch.details}
-              </Typography>
+              </p>
             </CardContent>
             <CardActions>
               <Button size="small" component={Link} to={`/launch/${launch.flight_number}`}>
