@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Hidden from 'material-ui/Hidden';
@@ -108,7 +109,7 @@ class LaunchStats extends Component {
               Launch Site
             </Typography>
             <Typography component="p">
-              {this.state.launch_site.site_name_long} ({this.state.launch_site.site_name})
+              {this.state.launch_site.site_name_long} (<Link className="basic-link" to={`/launchpad/${this.state.launch_site.site_id}`}>{this.state.launch_site.site_name}</Link>)
             </Typography>
           </CardContent>
         </Card>
@@ -129,12 +130,24 @@ class LaunchStats extends Component {
               </Typography>
             </Hidden>
             <Hidden mdUp>
-              <Button fullWidth component="a" href={this.state.links.reddit_campaign}><Reddit style={{ marginRight: '5px'}} /> Campaign</Button>
-              <Button fullWidth component="a" href={this.state.links.reddit_launch}><Reddit style={{ marginRight: '5px'}} /> Launch</Button>
-              <Button fullWidth component="a" href={this.state.links.reddit_media}><Reddit style={{ marginRight: '5px'}} /> Media</Button>
-              <Button fullWidth component="a" href={this.state.links.presskit}>Presskit</Button>
-              <Button fullWidth component="a" href={this.state.links.article_link}>Article</Button>
-              <Button fullWidth component="a" href={this.state.links.video_link}>Video</Button>
+              <p>
+                <Button fullWidth variant="raised" color="secondary" component="a" href={this.state.links.reddit_campaign}><Reddit style={{ marginRight: '5px'}} /> Campaign</Button>
+              </p>
+              <p>
+                <Button fullWidth variant="raised" color="secondary" component="a" href={this.state.links.reddit_launch}><Reddit style={{ marginRight: '5px'}} /> Launch</Button>
+              </p>
+              <p>
+                <Button fullWidth variant="raised" color="secondary" component="a" href={this.state.links.reddit_media}><Reddit style={{ marginRight: '5px'}} /> Media</Button>
+              </p>
+              <p>
+                <Button fullWidth variant="raised" component="a" href={this.state.links.presskit}>Presskit</Button>
+              </p>
+              <p>
+                <Button fullWidth variant="raised" component="a" href={this.state.links.article_link}>Article</Button>
+              </p>
+              <p>
+                <Button fullWidth variant="raised" component="a" href={this.state.links.video_link}>Video</Button>
+              </p>
             </Hidden>
           </CardContent>
         </Card>
