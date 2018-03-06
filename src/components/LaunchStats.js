@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
+import Hidden from 'material-ui/Hidden';
 import Reddit from 'mdi-material-ui/Reddit';
 import Typography from 'material-ui/Typography';
 import axios from 'axios';
@@ -117,14 +118,24 @@ class LaunchStats extends Component {
             <Typography variant="headline" component="h3">
               Links
             </Typography>
-            <Typography component="p">
-              <Button component="a" href={this.state.links.reddit_campaign}><Reddit style={{ marginRight: '5px'}} /> Campaign</Button>
-              <Button component="a" href={this.state.links.reddit_launch}><Reddit style={{ marginRight: '5px'}} /> Launch</Button>
-              <Button component="a" href={this.state.links.reddit_media}><Reddit style={{ marginRight: '5px'}} /> Media</Button>
-              <Button component="a" href={this.state.links.presskit}>Presskit</Button>
-              <Button component="a" href={this.state.links.article_link}>Article</Button>
-              <Button component="a" href={this.state.links.video_link}>Video</Button>
-            </Typography>
+            <Hidden smDown>
+              <Typography component="p">
+                <Button component="a" href={this.state.links.reddit_campaign}><Reddit style={{ marginRight: '5px'}} /> Campaign</Button>
+                <Button component="a" href={this.state.links.reddit_launch}><Reddit style={{ marginRight: '5px'}} /> Launch</Button>
+                <Button component="a" href={this.state.links.reddit_media}><Reddit style={{ marginRight: '5px'}} /> Media</Button>
+                <Button component="a" href={this.state.links.presskit}>Presskit</Button>
+                <Button component="a" href={this.state.links.article_link}>Article</Button>
+                <Button component="a" href={this.state.links.video_link}>Video</Button>
+              </Typography>
+            </Hidden>
+            <Hidden mdUp>
+              <Button fullWidth component="a" href={this.state.links.reddit_campaign}><Reddit style={{ marginRight: '5px'}} /> Campaign</Button>
+              <Button fullWidth component="a" href={this.state.links.reddit_launch}><Reddit style={{ marginRight: '5px'}} /> Launch</Button>
+              <Button fullWidth component="a" href={this.state.links.reddit_media}><Reddit style={{ marginRight: '5px'}} /> Media</Button>
+              <Button fullWidth component="a" href={this.state.links.presskit}>Presskit</Button>
+              <Button fullWidth component="a" href={this.state.links.article_link}>Article</Button>
+              <Button fullWidth component="a" href={this.state.links.video_link}>Video</Button>
+            </Hidden>
           </CardContent>
         </Card>
       </div>
