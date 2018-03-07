@@ -2,8 +2,10 @@
   "name": "spacexplorer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://thehouseplant.github.io/spacexplorer",
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^1.1.0",
     "material-ui": "^1.0.0-beta.35",
     "material-ui-icons": "^1.0.0-beta.35",
     "mdi-material-ui": "^3.0.1",
@@ -17,6 +19,8 @@
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
