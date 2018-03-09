@@ -38,7 +38,6 @@ class LaunchStats extends Component {
           links: res.data[0].links,
           cores: res.data[0].rocket.first_stage.cores,
           payloads: res.data[0].rocket.second_stage.payloads
-          //settings: res.data[Object.keys(res.data)[0]].settings.index
         }
       ))
       .catch(err => console.log(err));
@@ -53,12 +52,12 @@ class LaunchStats extends Component {
             <Typography variant="headline" component="h3">
               Flight {this.state.launch.flight_number}
             </Typography>
-            <Typography component="p">
+            <p>
               <small>{this.state.launch.launch_date_utc} UTC</small>
-            </Typography>
-            <Typography component="p">
+            </p>
+            <p>
               {this.state.launch.details}
-            </Typography>
+            </p>
           </CardContent>
         </Card>
 
@@ -67,19 +66,38 @@ class LaunchStats extends Component {
             <Typography variant="headline" component="h3">
               Rocket
             </Typography>
-            <Typography component="p">
+            <p>
               {this.state.rocket.rocket_name} ({this.state.rocket.rocket_id})
-            </Typography>
-            <Typography component="p">
+            </p>
+            <p>
               {this.state.telemetry.flight_club}
-            </Typography>
-            <Typography component="p">
-              {this.state.cores.map(core => 
-                <Typography component="p">
+            </p>
+            <strong>Cores</strong>:
+            {this.state.cores.map(core => 
+              <ul key={core.core_serial}>
+                <li>
                   <strong>Serial</strong>: {core.core_serial}
-                </Typography>
-              )}
-            </Typography>
+                </li>
+                <li>
+                  <strong>Flight</strong>: {core.flight}
+                </li>
+                <li>
+                  <strong>Block</strong>: {core.block}
+                </li>
+                <li>
+                  <strong>Reused</strong>: {core.reused}
+                </li>
+                <li>
+                  <strong>Land Success</strong>: {core.land_success}
+                </li>
+                <li>
+                  <strong>Landing Type</strong>: {core.landing_type}
+                </li>
+                <li>
+                  <strong>Landing Vehicle</strong>: {core.landing_vehicle}
+                </li>
+              </ul>
+            )}
           </CardContent>
         </Card>
 
@@ -88,18 +106,22 @@ class LaunchStats extends Component {
             <Typography variant="headline" component="h3">
               Payload
             </Typography>
-            <Typography component="p">
-              {this.state.payloads.map(payload => 
-                <p>
-                  <strong>{payload.payload_id}:</strong>
+            {this.state.payloads.map(payload => 
+              <ul key={payload.payload_id}>
+                <li>Customers:
                   <ul>
-                    <li>Type: {payload.payload_type}</li>
-                    <li>Mass: {payload.payload_mass_kg}kg / {payload.payload_mass_lb}lbs</li>
-                    <li>Orbit: {payload.orbit}</li>
+                    {payload.customers.map(customer =>
+                      <li key={customer}>
+                        {customer}
+                      </li>
+                    )}
                   </ul>
-                </p>
-              )}
-            </Typography>
+                </li>
+                <li>Type: {payload.payload_type}</li>
+                <li>Mass: {payload.payload_mass_kg}kg / {payload.payload_mass_lbs}lbs</li>
+                <li>Orbit: {payload.orbit}</li>
+              </ul>
+            )}
           </CardContent>
         </Card>
 
@@ -108,9 +130,9 @@ class LaunchStats extends Component {
             <Typography variant="headline" component="h3">
               Launch Site
             </Typography>
-            <Typography component="p">
+            <p>
               {this.state.launch_site.site_name_long} (<Link className="basic-link" to={`/launchpad/${this.state.launch_site.site_id}`}>{this.state.launch_site.site_name}</Link>)
-            </Typography>
+            </p>
           </CardContent>
         </Card>
 
@@ -120,14 +142,14 @@ class LaunchStats extends Component {
               Links
             </Typography>
             <Hidden smDown>
-              <Typography component="p">
+              <p>
                 <Button component="a" href={this.state.links.reddit_campaign}><Reddit style={{ marginRight: '5px'}} /> Campaign</Button>
                 <Button component="a" href={this.state.links.reddit_launch}><Reddit style={{ marginRight: '5px'}} /> Launch</Button>
                 <Button component="a" href={this.state.links.reddit_media}><Reddit style={{ marginRight: '5px'}} /> Media</Button>
                 <Button component="a" href={this.state.links.presskit}>Presskit</Button>
                 <Button component="a" href={this.state.links.article_link}>Article</Button>
                 <Button component="a" href={this.state.links.video_link}>Video</Button>
-              </Typography>
+              </p>
             </Hidden>
             <Hidden mdUp>
               <p>
