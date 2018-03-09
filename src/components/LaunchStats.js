@@ -67,7 +67,7 @@ class LaunchStats extends Component {
               Rocket
             </Typography>
             <p>
-              {this.state.rocket.rocket_name} ({this.state.rocket.rocket_id})
+              {this.state.rocket.rocket_name} (<Link className="basic-link" to={`/rocket/${this.state.rocket.rocket_id}`}>{this.state.rocket.rocket_id}</Link>)
             </p>
             <p>
               {this.state.telemetry.flight_club}
