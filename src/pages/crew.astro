@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const response = await fetch('https://api.spacexdata.com/v4/crew');
+const members = await response.json();
+---
+
+<Layout title="SpaceXplorer - Launches">
+	<main class="container mx-auto">
+		<div class="overflow-x-auto w-full">
+			<table class="table table-zebra w-full">
+			  	<thead>
+					<tr>
+                        <th></th>
+						<th>Name</th>
+						<th>Agency</th>
+                        <th>Status</th>
+						<th>Links</th>
+					</tr>
+				</thead>
+				<tbody>
+				{members.map(member => (
+					<tr>
+                        <td>
+                            <div class="avatar">
+                                <div class="w-32 rounded">
+                                    <img src={member.image} alt="" />
+                                </div>
+                            </div>
+                        </td>
+						<td>
+							{member.name}
+						</td>
+						<td>
+							{member.agency}
+						</td>
+						<td>
+							{member.status}	
+						</td>
+						<td>
+							<a href={member.wikipedia} target="_blank">Wikipedia</a>
+						</td>
+					</tr>
+				))}
+				</tbody>
+			</table>
+		</div>
+	</main>
+</Layout>
