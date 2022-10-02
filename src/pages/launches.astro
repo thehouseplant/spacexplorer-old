@@ -1,9 +1,119 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const upcomingResponse = await fetch('https://api.spacexdata.com/v5/launches/upcoming?order=desc');
+const upcomingLaunches = await upcomingResponse.json();
+
+const pastResponse = await fetch('https://api.spacexdata.com/v5/launches/past?order=asc');
+const pastLaunches = await pastResponse.json();
 ---
 
 <Layout title="SpaceXplorer - Launches">
-	<main>
-		<h1>Launches</h1>
+	<main class="container mx-auto">
+		<div class="overflow-x-auto w-full">
+			<table class="table table-zebra w-full">
+			  	<thead>
+					<tr>
+						<th>Patch</th>
+						<th>Flight</th>
+						<th>Mission</th>
+						<th>Date</th>
+						<th>Links</th>
+					</tr>
+				</thead>
+				<tbody>
+				{upcomingLaunches.map(launch => (
+					<tr>
+						<td>
+							{launch.links.patch.small &&
+								<img src={launch.links.patch.small} alt="" />	
+							}
+						</td>
+						<td>
+							{launch.flight_number}
+						</td>
+						<td>
+							{launch.name}	
+						</td>
+						<td>
+							{launch.date_utc}
+						</td>
+						<td>
+							{launch.links.reddit.campaign &&
+								<a href={launch.links.reddit.campaign} target="_blank">Reddit</a>
+							}
+							<br />
+							{launch.links.presskit &&
+								<a href={launch.links.presskit} target="_blank">Presskit</a>
+							}
+							<br />
+							{launch.links.webcast &&
+								<a href={launch.links.webcast} target="_blank">Webcast</a>
+							}
+							<br />
+							{launch.links.wikipedia &&
+								<a href={launch.links.wikipedia} target="_blank">Wikipedia</a>
+							}
+						</td>
+					</tr>
+				))}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="divider py-16">
+			<strong>Past Launches</strong>
+		</div>
+
+		<div class="overflow-x-auto w-full">
+			<table class="table table-zebra w-full">
+			  	<thead>
+					<tr>
+						<th>Patch</th>
+						<th>Flight</th>
+						<th>Mission</th>
+						<th>Date</th>
+						<th>Links</th>
+					</tr>
+				</thead>
+				<tbody>
+				{pastLaunches.map(launch => (
+					<tr>
+						<td>
+							{launch.links.patch.small &&
+								<img src={launch.links.patch.small} alt="" />	
+							}
+						</td>
+						<td>
+							{launch.flight_number}
+						</td>
+						<td>
+							{launch.name}	
+						</td>
+						<td>
+							{launch.date_utc}
+						</td>
+						<td>
+							{launch.links.reddit.campaign &&
+								<a href={launch.links.reddit.campaign} target="_blank">Reddit</a>
+							}
+							<br />
+							{launch.links.presskit &&
+								<a href={launch.links.presskit} target="_blank">Presskit</a>
+							}
+							<br />
+							{launch.links.webcast &&
+								<a href={launch.links.webcast} target="_blank">Webcast</a>
+							}
+							<br />
+							{launch.links.wikipedia &&
+								<a href={launch.links.wikipedia} target="_blank">Wikipedia</a>
+							}
+						</td>
+					</tr>
+				))}
+				</tbody>
+			</table>
+		</div>
 	</main>
 </Layout>
