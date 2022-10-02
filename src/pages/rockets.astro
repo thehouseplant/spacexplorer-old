@@ -1,9 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const response = await fetch('https://api.spacexdata.com/v4/rockets');
+const rockets = await response.json();
 ---
 
 <Layout title="SpaceXplorer - Rockets">
-	<main>
-		<h1>Rockets</h1>
+	<main class="container mx-auto">
+		<div class="overflow-x-auto w-full">
+			<table class="table table-zebra w-full">
+			  	<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Company</th>
+						<th>First Flight</th>
+                        <th>Active</th>
+						<th>Links</th>
+					</tr>
+				</thead>
+				<tbody>
+				{rockets.map(rocket => (
+					<tr>
+						<td>
+							{rocket.name}
+						</td>
+						<td>
+							{rocket.type}
+						</td>
+						<td>
+							{rocket.company}	
+						</td>
+						<td>
+							{rocket.first_flight}
+						</td>
+						<td>
+							{rocket.active === false &&
+								<span>No</span>
+							}
+							{rocket.active === true &&
+								<span>Yes</span>
+							}
+						</td>
+						<td>
+							<a href={rocket.wikipedia} target="_blank">Wikipedia</a>
+						</td>
+					</tr>
+				))}
+				</tbody>
+			</table>
+		</div>
 	</main>
 </Layout>
