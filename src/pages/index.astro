@@ -1,9 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const response = await fetch('https://api.spacexdata.com/v2/info');
+const data = await response.json();
 ---
 
 <Layout title="SpaceXplorer">
 	<main>
-		<h1>Index</h1>
+		<h1>{data.name}</h1>
+		<p>
+			{data.summary}
+		</p>
+		<p>
+			<strong>Founder</strong>: {data.founder}
+		</p>
+		<p>
+			<strong>Founded</strong>: {data.founded}
+		</p>
+		<strong>Headquarters</strong>:
+		<ul>
+			<li>{data.headquarters.address}</li>
+			<li>{data.headquarters.city}, {data.headquarters.state}</li>
+		</ul>
+		<p>
+			<strong>Employees</strong>: {data.employees}
+		</p>
+		<p>
+			<strong>Vehicles</strong>: {data.vehicles}
+		</p>
+		<p>
+			<strong>Launch Sites</strong>: {data.launch_sites}
+		</p>
+		<p>
+			<strong>Test Sites</strong>: {data.test_sites}
+		</p>
+		<strong>Key Staff</strong>:
+		<ul>
+			<li>CEO: {data.ceo}</li>
+			<li>CTO: {data.cto}</li>
+			<li>COO: {data.coo}</li>
+			<li>CTO of Propulsion: {data.cto_propulsion}</li>
+		</ul>
+		<p>
+			<strong>Valuation</strong>: ~${data.valuation}
+		</p>
 	</main>
 </Layout>
